@@ -1,0 +1,94 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Billing {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+
+          <div class="col-md-12 mb-lg-0 mb-4">
+            <div class="card mt-4">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="col-6 d-flex align-items-center">
+                    <h6 class="mb-0">SURVEY METHOD</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-md-6 mb-md-0 mb-4">
+                    <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                      <div>
+                      <center>
+                        <button><a class="w-10 me-3 mb-0" href="/online.html">ONLINE</a></button>
+                      </center>
+                      </div>
+
+            
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                      <div>
+                        <center>
+                          <button><a class="w-10 me-3 mb-0" href="/offline.html">OFFLINE</a></button>
+                        </center>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    <div class="row">
+      <div class="col-md-13 mt-4">
+        <div class="card">
+          <div class="card-header pb-0 px-3">
+            <h2 class="mb-0">OFFLINE SURVEY </h2>
+            <h3 class="mb=0">YOU CAN UPLOAD YOUR SURVEY FILE HERE</h3>  
+          <div class="form-section">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file">
+                   <input type="submit" value="Upload">
+            </form>
+        </div>
+        <div>
+            <p>
+
+            </p>
+        </div>
+        <div>
+            <p>
+                
+            </p>
+        </div>
+        <div>
+            <p>
+                
+            </p>
+        </div>
+        <div>
+            <p>
+                
+            </p>
+        </div>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

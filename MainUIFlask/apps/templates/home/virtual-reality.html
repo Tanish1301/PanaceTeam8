@@ -1,0 +1,79 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Billing {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="col-md-12 mb-lg-0 mb-4">
+  <div class="card mt-4">
+    <div class="card-header pb-0 p-3">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center">
+          <h6 class="mb-0">Update health</h6>
+        </div>
+      </div>
+    </div>
+    <div class="card-body p-3">
+      <div class="row">
+        <div class="col-md-6 mb-md-0 mb-4">
+          <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+            <h6 class="mb-0" style="color: CRIMSON;margin-right:5%;align-items:center;"> Type of Update </h6>
+                   
+                    <div class="btn-group">
+                       <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                              CLICK ME
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="/infrastructure.html">Past</a>
+                          <a class="dropdown-item" href="/health.html">Current</a>
+                         
+                        </div>
+                      </div>
+
+  
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+    <div class="row">
+      <div class="col-md-7 mt-4">
+        <div class="card">
+          <div class="card-header pb-0 px-3">
+            <h6 class="mb-0">How is your Mental Health ?</h6>
+          </div>
+          <div class="card-body pt-4 p-3">
+            <P>Mental Health Related Chatbot (Planning) </P>
+        </div>
+      </div>
+      <div class="col-md-5 mt-4">
+        <div class="card h-100 mb-4">
+          <div class="card-header pb-0 px-3">
+            <div class="row">
+              <div class="col-md-6">
+                <h6 class="mb-0">SOME GRAPH HERE</h6>
+              </div>
+              <div class="col-md-6 d-flex justify-content-start justify-content-md-end align-items-center">
+                <i class="material-icons me-2 text-lg">date_range</i>
+                <small>1 - 30 Sept 2022</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-4 p-3">
+          </div>
+            
+      </div>
+    </div>
+    </div>
+    
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

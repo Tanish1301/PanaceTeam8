@@ -1,0 +1,375 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Billing {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin: 0;
+  color: #27253d;
+  background: #e6f3f8;
+}
+
+main {
+  position: relative;
+  padding: 1rem 1rem 3rem;
+  min-height: calc(100vh - 4rem);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.pagination-container {
+  width: calc(100% - 2rem);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 0;
+  justify-content: center;
+}
+
+.pagination-number,
+.pagination-button{
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: #fff;
+}
+
+.pagination-number.active {
+  color: #fff;
+  background: #0085b6;
+}
+</style>
+          <div class="col-md-12 mb-lg-0 mb-4">
+            <div class="card mt-4">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="col-6 d-flex align-items-center">
+                    <h6 class="mb-0">SURVEY METHOD</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-md-6 mb-md-0 mb-4">
+                    <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                      <div>
+                      <center>
+                        <button><a class="w-10 me-3 mb-0" href="/online.html">ONLINE</a></button>
+                      </center>
+                      </div>
+
+            
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                      <div>
+                        <center>
+                          <button><a class="w-10 me-3 mb-0" href="/offline.html">OFFLINE</a></button>
+                        </center>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    <div class="row">
+      <div class="col-md-15 mt-4">
+        <div class="card">
+          <main>
+
+            <h1>ONLINE SURVEY QUESTIONNAIRE</h1>
+            <ul id="paginated-list" data-current-page="1" aria-live="polite">
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+                <form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+              <li>
+                <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form> 
+              </li>
+ 
+            </ul>
+          
+            <nav class="pagination-container">
+              <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
+                &lt;
+              </button>
+          
+              <div id="pagination-numbers">
+          
+              </div>
+          
+              <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+                &gt;
+              </button>
+            </nav>
+          </main> 
+          </div>
+              </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+<script>
+    const paginationNumbers = document.getElementById("pagination-numbers");
+const paginatedList = document.getElementById("paginated-list");
+const listItems = paginatedList.querySelectorAll("li");
+const nextButton = document.getElementById("next-button");
+const prevButton = document.getElementById("prev-button");
+
+const paginationLimit = 1;
+const pageCount = Math.ceil(listItems.length / paginationLimit);
+let currentPage = 1;
+
+const disableButton = (button) => {
+  button.classList.add("disabled");
+  button.setAttribute("disabled", true);
+};
+
+const enableButton = (button) => {
+  button.classList.remove("disabled");
+  button.removeAttribute("disabled");
+};
+
+const handlePageButtonsStatus = () => {
+  if (currentPage === 1) {
+    disableButton(prevButton);
+  } else {
+    enableButton(prevButton);
+  }
+
+  if (pageCount === currentPage) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
+};
+
+const handleActivePageNumber = () => {
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    button.classList.remove("active");
+    const pageIndex = Number(button.getAttribute("page-index"));
+    if (pageIndex == currentPage) {
+      button.classList.add("active");
+    }
+  });
+};
+
+const appendPageNumber = (index) => {
+  const pageNumber = document.createElement("button");
+  pageNumber.className = "pagination-number";
+  pageNumber.innerHTML = index;
+  pageNumber.setAttribute("page-index", index);
+  pageNumber.setAttribute("aria-label", "Page " + index);
+
+  paginationNumbers.appendChild(pageNumber);
+};
+
+const getPaginationNumbers = () => {
+  for (let i = 1; i <= pageCount; i++) {
+    appendPageNumber(i);
+  }
+};
+
+const setCurrentPage = (pageNum) => {
+  currentPage = pageNum;
+
+  handleActivePageNumber();
+  handlePageButtonsStatus();
+  
+  const prevRange = (pageNum - 1) * paginationLimit;
+  const currRange = pageNum * paginationLimit;
+
+  listItems.forEach((item, index) => {
+    item.classList.add("hidden");
+    if (index >= prevRange && index < currRange) {
+      item.classList.remove("hidden");
+    }
+  });
+};
+
+window.addEventListener("load", () => {
+  getPaginationNumbers();
+  setCurrentPage(1);
+
+  prevButton.addEventListener("click", () => {
+    setCurrentPage(currentPage - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    setCurrentPage(currentPage + 1);
+  });
+
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    const pageIndex = Number(button.getAttribute("page-index"));
+
+    if (pageIndex) {
+      button.addEventListener("click", () => {
+        setCurrentPage(pageIndex);
+      });
+    }
+  });
+});
+</script>
+    
+    {% include 'includes/footer.html' %}
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
