@@ -26,8 +26,8 @@
                               CLICK ME
                         </button>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="/infrastructure.html">Past</a>
-                          <a class="dropdown-item" href="/health.html">Current</a>
+                          <a class="dropdown-item" href="/infrastructure.html">Chief Concerns</a>
+                          <a class="dropdown-item" href="/health.html">Current Status</a>
                          
                         </div>
                       </div>
@@ -41,38 +41,120 @@
   </div>
 
 
-    <div class="row">
-      <div class="col-md-7 mt-4">
-        <div class="card">
-          <div class="card-header pb-0 px-3">
-            <h6 class="mb-0">How is your Mental Health ?</h6>
-          </div>
-          <div class="card-body pt-4 p-3">
+</div>
+
+<div>
+  <h1>__________</h1>
+</div>
+
+<div>
+
+  <div class="row mb-6" style="background-Color:#F7DC6F;">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+      <div class="card">
+        <h3> Update your mental Health </h3>
+        <P>Mental Health Related Chatbot (Planning) </P>
             <P>Mental Health Related Chatbot (Planning) </P>
+            <P>Mental Health Related Chatbot (Planning) </P>
+            <P>Mental Health Related Chatbot (Planning) </P>
+            <P>Mental Health Related Chatbot (Planning) </P>
+            <P>Mental Health Related Chatbot (Planning) </P>
+            <P>Mental Health Related Chatbot (Planning) </P>
+            <P>Mental Health Related Chatbot (Planning) </P>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card h-80">
+        <div class="col-md-6">
+          <h4 class="mb-0"> Vaccination's Done</h4>
+        </div>
+        <SCRIPT language="javascript">
+          function addRow(tableID) {
+      
+            var table = document.getElementById(tableID);
+      
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+      
+            var colCount = table.rows[0].cells.length;
+      
+            for(var i=0; i<colCount; i++) {
+      
+              var newcell	= row.insertCell(i);
+      
+              newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+              //alert(newcell.childNodes);
+              switch(newcell.childNodes[0].type) {
+                case "text":
+                    newcell.childNodes[0].value = "";
+                    break;
+                case "checkbox":
+                    newcell.childNodes[0].checked = false;
+                    break;
+                case "select-one":
+                    newcell.childNodes[0].selectedIndex = 0;
+                    break;
+              }
+            }
+          }
+      
+          function deleteRow(tableID) {
+            try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+      
+            for(var i=0; i<rowCount; i++) {
+              var row = table.rows[i];
+              var chkbox = row.cells[0].childNodes[0];
+              if(null != chkbox && true == chkbox.checked) {
+                if(rowCount <= 1) {
+                  alert("Cannot delete all the rows.");
+                  break;
+                }
+                table.deleteRow(i);
+                rowCount--;
+                i--;
+              }
+      
+      
+            }
+            }catch(e) {
+              alert(e);
+            }
+          }
+      
+        </SCRIPT>
+      </HEAD>
+      <BODY>
+      
+        <INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
+      
+        <INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
+      
+        <TABLE id="dataTable" width="350px" border="1">
+          <TR>
+            <TD><INPUT type="checkbox" name="chk"/></TD>
+            <TD><INPUT type="text" name="txt"/></TD>
+            <TD>
+              <SELECT name="country">
+                <OPTION value="in">Private</OPTION>
+                <OPTION value="de">Public</OPTION>
+                </SELECT>
+            </TD>
+          </TR>
+        </TABLE>
+      
+      </BODY>
+         
         </div>
       </div>
-      <div class="col-md-5 mt-4">
-        <div class="card h-100 mb-4">
-          <div class="card-header pb-0 px-3">
-            <div class="row">
-              <div class="col-md-6">
-                <h6 class="mb-0">SOME GRAPH HERE</h6>
-              </div>
-              <div class="col-md-6 d-flex justify-content-start justify-content-md-end align-items-center">
-                <i class="material-icons me-2 text-lg">date_range</i>
-                <small>1 - 30 Sept 2022</small>
-              </div>
-            </div>
-          </div>
-          <div class="card-body pt-4 p-3">
-          </div>
-            
+        </div>
       </div>
     </div>
-    </div>
-    
   </div>
 
+
+</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->

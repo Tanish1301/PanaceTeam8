@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+
+
+	<style>
+
+		/* Styling the Body element i.e. Color,
+		Font, Alignment */
+		body {
+			background-color: #e91e63;
+			font-family: Verdana;
+			text-align: center;
+		}
+
+		/* Styling the Form (Color, Padding, Shadow) */
+		form {
+      float: center;
+			background-color: #fff;
+			max-width: 1000px;
+			margin: 50px auto;
+			padding: 30px 20px; 
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Styling form-control Class */
+		.form-control {
+			text-align: left;
+			margin-bottom: 25px;
+		}
+
+		/* Styling form-control Label */
+		.form-control label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		/* Styling form-control input,
+		select, textarea */
+		.form-control input,
+		.form-control select,
+		.form-control textarea {
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			padding: 10px;
+			display: block;
+			width: 95%;
+		}
+
+		/* Styling form-control Radio
+		button and Checkbox */
+		.form-control input[type="radio"],
+		.form-control input[type="checkbox"] {
+			display: inline-block;
+			width: auto;
+		}
+
+		/* Styling Button */
+		button {
+			background-color:#e91e63 ;
+			border: 1px solid ;
+			border-radius: 2px;
+			font-family: inherit;
+			font-size: 21px;
+			display: block;
+			width: 100%;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>PAST HEALTH HISTORY</h1>
+
+	<!-- Create Form -->
+	<form id="form" action="/familyhistory.html">
+		<!--
+		<div class="form-control">
+			<label for="name" id="label-name">
+				Name
+			</label>
+
+			
+			<input type="text"
+				id="name"
+				placeholder="Enter your name" />
+		</div>
+
+		<div class="form-control">
+			<label for="email" id="label-email">
+				Email
+			</label>
+
+			<input type="email"
+				id="email"
+				placeholder="Enter your email" />
+		</div>
+
+		<div class="form-control">
+			<label for="age" id="label-age">
+				Age
+			</label>
+
+			
+			<input type="text"
+				id="age"
+				placeholder="Enter your age" />
+		</div>
+	-->
+		<div class="form-control">
+			<label for="role" id="label-role">
+				Do you have any past health complications?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select name="role" id="role">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
+		</div>
+
+
+
+		<div class="form-control">
+			<label>Any Childhood Illness?
+				<small>(Check all that apply)</small>
+			</label>
+			<!-- Input Type Checkbox -->
+			<label for="inp-1">
+				<input type="checkbox"
+					name="inp">Respiratory Tract Infections</input></label>
+			<label for="inp-2">
+				<input type="checkbox"
+					name="inp">Ear Pain</input></label>
+			<label for="inp-3">
+				<input type="checkbox"
+					name="inp">Fainting (Syncope)</input></label>
+			<label for="inp-4">
+				<input type="checkbox"
+					name="inp">Skin Infections (Eczema)</input></label>
+			<label for="inp-5">
+				<input type="checkbox"
+					name="inp">Abdominal Pain, Diarrhoea, and Vomiting</input></label>
+			<label for="inp-6">
+				<input type="checkbox"
+					name="inp">Problem X</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">Problem Y</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">None</input></label>
+		</div>
+
+		<div class="form-control">
+			<label>Any Adult Illness?
+				<small>(Check all that apply)</small>
+			</label>
+			<!-- Input Type Checkbox -->
+			<label for="inp-1">
+				<input type="checkbox"
+					name="inp">Allergies</input></label>
+			<label for="inp-2">
+				<input type="checkbox"
+					name="inp">Colds and Flu</input></label>
+			<label for="inp-3">
+				<input type="checkbox"
+					name="inp">Conjunctivitis ("pink eye“)</input></label>
+			<label for="inp-4">
+				<input type="checkbox"
+					name="inp">Diarrhea</input></label>
+			<label for="inp-5">
+				<input type="checkbox"
+					name="inp">Stomach Aches</input></label>
+			<label for="inp-6">
+				<input type="checkbox"
+					name="inp">Problem X</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">Problem Y</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">None</input></label>
+		</div>
+		<div class="form-control">
+			<label>Any Psychiatric Illness?
+				<small>(Check all that apply)</small>
+			</label>
+			<!-- Input Type Checkbox -->
+			<label for="inp-1">
+				<input type="checkbox"
+					name="inp">Depression</input></label>
+			<label for="inp-2">
+				<input type="checkbox"
+					name="inp">Anxiety disorders
+				</input></label>
+			<label for="inp-3">
+				<input type="checkbox"
+					name="inp">Eating disorders</input></label>
+			<label for="inp-4">
+				<input type="checkbox"
+					name="inp">Addictive behaviors</input></label>
+			<label for="inp-5">
+				<input type="checkbox"
+					name="inp">Sleep-Wake Disorders</input></label>
+			<label for="inp-6">
+				<input type="checkbox"
+					name="inp">Problem X</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">Problem Y</input></label>
+			<label for="inp-7">
+				<input type="checkbox"
+					name="inp">None</input></label>
+		</div>
+
+		<div class="form-control">
+			<label>Do you have any of these
+			</label>
+			<!-- Input Type Checkbox -->
+			<label for="inp-1">
+				<input type="checkbox"
+					name="inp">Burns</input></label>
+			<label for="inp-2">
+				<input type="checkbox"
+					name="inp">Injuries
+				</input></label>
+			<label for="inp-3">
+				<input type="checkbox"
+					name="inp">Fractures</input></label>
+		</div>
+		<div class="form-control">
+			<label for="comment">
+				Any Current Medications?
+			</label>
+
+			<!-- multi-line text input control -->
+			<textarea name="comment" id="comment"
+				placeholder="Enter your comment here">
+			</textarea>
+		</div>
+		<div class="form-control">
+			<label for="comment">
+				Any Relief factors you've found?
+			</label>
+
+			<!-- multi-line text input control -->
+			<textarea name="comment" id="comment"
+				placeholder="Enter here">
+			</textarea>
+		</div>
+		<div class="form-control">
+			<label for="comment">
+				Treating Doctor
+			</label>
+
+			<!-- multi-line text input control -->
+			<textarea name="comment" id="comment"
+				placeholder="Enter your treating doctor name">
+			</textarea>
+		</div>
+
+		<!-- Multi-line Text Input Control -->
+		<button type="submit" value="submit">
+			Submit
+		</button>
+	</form>
+</body>
+
+</html>
