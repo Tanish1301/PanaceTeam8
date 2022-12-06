@@ -2,7 +2,6 @@
 """
 Copyright (c) 2019 - present AppSeed.us
 """
-
 from flask_migrate import Migrate
 from flask import render_template, request, redirect
 
@@ -37,20 +36,25 @@ if DEBUG:
 if __name__ == "__main__":
     app.run()
 
-@app.route('/online')  
+@app.route('/tables')  
 def online():  
-    return render_template("online.html");  
+    return render_template("tables.html");  
 
 @app.route('/offline')  
 def offline():  
     return render_template("offline.html");
+
+@app.route('/tables')  
+def offline():  
+    return render_template("tables.html");
 
 @app.route('/upload',methods=['POST'])
 def upload():
     if request.method=='POST':
         f=request.files['file']
         f.save(f.filename)
-        return redirect('offline.html')
+        return redirect('/tables')
+
 
 from werkzeug.utils import secure_filename
 import os

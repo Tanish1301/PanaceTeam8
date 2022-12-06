@@ -1,117 +1,347 @@
-{% extends "layouts/base.html" %}
+<head>
+<style>
+  /* (A) ENTIRE PAGE */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+body { padding: 10px; margin: 0; }
+:root {
+  --bg-color-a: #3b39af; /* page header + form label */
+  --bg-color-b: #404040; /* calendar header */
+  --bg-color-c: #d73a3a; /* buttons */
+}
+.hide { display: none !important; }
 
-{% block title %} Tables {% endblock %} 
+/* (B) PERIOD SELECTOR */
+#calPeriod {
+  padding: 15px;
+  background: var(--bg-color-a);
+}
+#calPeriod input, #calPeriod select {
+  font-size: 24px;
+  border: 0; outline: none;
+  color: #fff; background: 0;
+  cursor: pointer;
+}
+#calPeriod option { color: #000; }
+#calYear {
+  width: 100px;
+  margin-left: 10px;
+}
 
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+/* (C) CALENDAR */
+/* (C1) SHARED */
+.calHead, .calRow { display: flex; }
+.calCell { width: 14.2857%; }
 
-{% block content %}
+/* (C2) HEADER - DAY NAMES */
+.calHead .calCell {
+  color: #fff; background: var(--bg-color-b);
+  font-weight: 700; text-align: center;
+  padding: 15px 0;
+}
 
-  <div class="container-fluid py-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card my-4">
-          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Report Details</h6>
-            </div>
-          </div>
-          <div class="card-body px-0 pb-2">
-            <div class="table-responsive p-0">
-              <table class="table align-items-center mb-0">
-                <thead>
-                  <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Test Name</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-                    <th class="text-secondary opacity-7"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">BlooD Test</h6>
-                          <p class="text-xs text-secondary mb-0">Vijaya Diagnostics</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Blood Glucose</p>
-                      <p class="text-xs text-secondary mb-0">Test</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Pending</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">23/08/22</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="" class="avatar avatar-sm me-3 border-radius-lg" alt="user2">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Full Body Checkup</h6>
-                          <p class="text-xs text-secondary mb-0">Lucid</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Bone Desnity</p>
-                      <p class="text-xs text-secondary mb-0">Primary test</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">Completed</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">11/01/22</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="card my-4">
-          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3"> Present Medication</h6>
-            </div>
-          </div>
-          <div class="card-body px-0 pb-2">
-            <div class="table-responsive p-0">
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
+/* (C3) BODY - INDIVIDUAL DAYS */
+.calBlank { background: #eee; }
+.calToday { background: #feffd3; }
+.calToday .cellDate { color: #ff9b9b; }
+.calBody .calCell {
+  border: 1px solid #f5f5f5;
+  min-height: 80px;
+}
+.cellDate, .evt { padding: 5px; }
+.cellDate {
+  font-size: 14px;
+  font-weight: 700;
+  color: #b5b5b5;
+}
+.evt {
+  font-size: 14px;
+  white-space: nowrap; text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-{% endblock content %}
+/* (D) EVENT FORM */
+#calForm {
+  position:fixed; top: 0; left: 0; z-index: 999;
+  width: 100vw; height: 100vh;
+  padding: 0; margin: 0; border: 0;
+  background: rgba(0,0,0,0.5);
+}
+#calForm:is([open]) {
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center;
+}
+#calForm form {
+  width: 450px; padding: 15px;
+  border-radius: 10px;
+  background: #fff;
+}
+#calForm h2 { margin: 0 0 15px 0; }
+#calForm label, #calForm input[type=text], #calForm textarea { width: 100%; }
+#calForm label {
+  color: #a1a1a1;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+#calForm input[type=text], #calForm textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+  background: #f5f5f5;
+}
+#calForm textarea { height: 50px; }
+#calForm input[type=button], #calForm input[type=submit] {
+  border: 0; padding: 10px; margin: 10px 2px 0 0;
+  color: #fff; background: var(--bg-color-c);
+  cursor: pointer;
+}
 
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+/* (X) DOES NOT MATTER */
+#code-boxx {
+  font-weight: 600;
+  margin-top: 30px;
+}
+#code-boxx a {
+  display: inline-block;
+  border: 0;
+  padding: 5px;
+  text-decoration: none;
+  background: #b90a0a;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+  <!-- (A) PERIOD SELECTOR -->
+<div id="calPeriod">
+  <select id="calMonth"></select>
+  <input type="number" id="calYear">
+</div>
+
+<!-- (B) CALENDAR -->
+<div id="calWrap"></div>
+
+<!-- (C) EVENT FORM -->
+<dialog id="calForm"><form method="dialog">
+  <h2>CALENDAR EVENT</h2>
+  <label>Date</label>
+  <input type="text" id="evtDate" readonly>
+  <label>Details</label>
+  <textarea id="evtTxt" required></textarea>
+
+  <input id="evtClose" type="button" value="Close">
+  <input id="evtDel" type="button" value="Delete">
+  <input id="evtSave" type="submit" value="Save">
+</form></dialog>
+
+<h3 class="mb=0">YOU CAN UPLOAD YOUR MEDICAL REPORT HERE</h3>  
+<div class="form-section">
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+         <input type="submit" value="Upload">
+  </form>
+</div>
+<div class="form-section">
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+         <input type="submit" value="Upload">
+  </form>
+</div>
+<div class="form-section">
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+         <input type="submit" value="Upload">
+  </form>
+</div>
+<div class="form-section">
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+         <input type="submit" value="Upload">
+  </form>
+</div>
+
+
+
+
+<!-- (X) VISIT CODE-BOXX -->
+<script>
+  var cal = {
+  // (A) PROPERTIES
+  // (A1) FLAGS & DATA
+  sMon : false, // week start on monday
+  data : null, // events for selected period
+  sDay : 0, sMth : 0, sYear : 0, // selected day month year
+
+  // (A2) MONTHS & DAY NAMES
+  months : [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ],
+  days : ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"],
+
+  // (A3) HTML ELEMENTS
+  hMth : null, hYear : null, // month/year selector
+  hWrap : null, // calendar wrapper
+  hFormWrap : null, hForm : null, // event form
+  hfDate : null, hfTxt : null, hfDel : null, // form fields
+
+  // (B) INIT CALENDAR
+  init : () => {
+    // (B1) GET HTML ELEMENTS
+    cal.hMth = document.getElementById("calMonth");
+    cal.hYear = document.getElementById("calYear");
+    cal.hWrap = document.getElementById("calWrap");
+    cal.hFormWrap = document.getElementById("calForm");
+    cal.hForm = cal.hFormWrap.querySelector("form");
+    cal.hfDate = document.getElementById("evtDate");
+    cal.hfTxt = document.getElementById("evtTxt");
+    cal.hfDel = document.getElementById("evtDel");
+
+    // (B2) APPEND MONTHS/YEAR
+    let now = new Date(), nowMth = now.getMonth();
+    cal.hYear.value = parseInt(now.getFullYear());
+    for (let i=0; i<12; i++) {
+      let opt = document.createElement("option");
+      opt.value = i;
+      opt.innerHTML = cal.months[i];
+      if (i==nowMth) { opt.selected = true; }
+      cal.hMth.appendChild(opt);
+    }
+
+    // (B3) ATTACH CONTROLS
+    cal.hMth.onchange = cal.draw;
+    cal.hYear.onchange = cal.draw;
+    cal.hForm.onsubmit = cal.save;
+    document.getElementById("evtClose").onclick = () => { cal.hFormWrap.open = false; };
+    cal.hfDel.onclick = cal.del;
+
+    // (B4) START - DRAW CALENDAR
+    if (cal.sMon) { cal.days.push(cal.days.shift()); }
+    cal.draw();
+  },
+
+  // (C) DRAW CALENDAR FOR SELECTED MONTH
+  draw : () => {
+    // (C1) DAYS IN MONTH + START/END DAYS
+    // note - jan is 0 & dec is 11
+    // note - sun is 0 & sat is 6
+    cal.sMth = parseInt(cal.hMth.value); // selected month
+    cal.sYear = parseInt(cal.hYear.value); // selected year
+    let daysInMth = new Date(cal.sYear, cal.sMth+1, 0).getDate(), // number of days in selected month
+        startDay = new Date(cal.sYear, cal.sMth, 1).getDay(), // first day of the month
+        endDay = new Date(cal.sYear, cal.sMth, daysInMth).getDay(), // last day of the month
+        now = new Date(), // current date
+        nowMth = now.getMonth(), // current month
+        nowYear = parseInt(now.getFullYear()), // current year
+        nowDay = cal.sMth==nowMth && cal.sYear==nowYear ? now.getDate() : null ;
+
+    // (C2) LOAD DATA FROM LOCALSTORAGE
+    cal.data = localStorage.getItem("cal-" + cal.sMth + "-" + cal.sYear);
+    if (cal.data==null) {
+      localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, "{}");
+      cal.data = {};
+    } else { cal.data = JSON.parse(cal.data); }
+
+    // (C3) DRAWING CALCULATIONS
+    // (C3-1) BLANK SQUARES BEFORE START OF MONTH
+    let squares = [];
+    if (cal.sMon && startDay != 1) {
+      let blanks = startDay==0 ? 7 : startDay ;
+      for (let i=1; i<blanks; i++) { squares.push("b"); }
+    }
+    if (!cal.sMon && startDay != 0) {
+      for (let i=0; i<startDay; i++) { squares.push("b"); }
+    }
+
+    // (C3-2) DAYS OF THE MONTH
+    for (let i=1; i<=daysInMth; i++) { squares.push(i); }
+
+    // (C3-3) BLANK SQUARES AFTER END OF MONTH
+    if (cal.sMon && endDay != 0) {
+      let blanks = endDay==6 ? 1 : 7-endDay;
+      for (let i=0; i<blanks; i++) { squares.push("b"); }
+    }
+    if (!cal.sMon && endDay != 6) {
+      let blanks = endDay==0 ? 6 : 6-endDay;
+      for (let i=0; i<blanks; i++) { squares.push("b"); }
+    }
+
+    // (C4) "RESET" CALENDAR
+    cal.hWrap.innerHTML = `<div class="calHead"></div>
+    <div class="calBody">
+      <div class="calRow"></div>
+    </div>`;
+
+    // (C5) CALENDAR HEADER - DAY NAMES
+    wrap = cal.hWrap.querySelector(".calHead");
+    for (let d of cal.days) {
+      let cell = document.createElement("div");
+      cell.className = "calCell";
+      cell.innerHTML = d;
+      wrap.appendChild(cell);
+    }
+
+    // (C6) CALENDAR BODY - INDIVIDUAL DAYS & EVENTS
+    wrap = cal.hWrap.querySelector(".calBody");
+    row = cal.hWrap.querySelector(".calRow");
+    for (let i=0; i<squares.length; i++) {
+      // (C6-1) GENERATE CELL
+      let cell = document.createElement("div");
+      cell.className = "calCell";
+      if (nowDay==squares[i]) { cell.classList.add("calToday"); }
+      if (squares[i]=="b") { cell.classList.add("calBlank"); }
+      else {
+        cell.innerHTML = `<div class="cellDate">${squares[i]}</div>`;
+        if (cal.data[squares[i]]) {
+          cell.innerHTML += "<div class='evt'>" + cal.data[squares[i]] + "</div>";
+        }
+        cell.onclick = () => { cal.show(cell); };
+      }
+      row.appendChild(cell);
+
+      // (C6-2) NEXT ROW
+      if (i!=0 && (i+1)%7==0) {
+        row = document.createElement("div");
+        row.className = "calRow";
+        wrap.appendChild(row);
+      }
+    }
+  },
+
+  // (D) SHOW EDIT EVENT DOCKET FOR SELECTED DAY
+  show : cell => {
+    cal.hForm.reset();
+    cal.sDay = cell.querySelector(".cellDate").innerHTML;
+    cal.hfDate.value = `${cal.sDay} ${cal.months[cal.sMth]} ${cal.sYear}`;
+    if (cal.data[cal.sDay] !== undefined) {
+      cal.hfTxt.value = cal.data[cal.sDay];
+      cal.hfDel.classList.remove("hide");
+    } else { cal.hfDel.classList.add("hide"); }
+    cal.hFormWrap.open = true;
+  },
+
+  // (E) SAVE EVENT
+  save : () => {
+    cal.data[cal.sDay] = cal.hfTxt.value;
+    localStorage.setItem(`cal-${cal.sMth}-${cal.sYear}`, JSON.stringify(cal.data));
+    cal.draw();
+    cal.hFormWrap.open = false;
+    return false;
+  },
+
+  // (F) DELETE EVENT FOR SELECTED DATE
+  del : () => { if (confirm("Delete event?")) {
+    delete cal.data[cal.sDay];
+    localStorage.setItem(`cal-${cal.sMth}-${cal.sYear}`, JSON.stringify(cal.data));
+    cal.draw();
+    cal.hFormWrap.open = false;
+  }}
+};
+window.onload = cal.init;
+</script>
+</body>
