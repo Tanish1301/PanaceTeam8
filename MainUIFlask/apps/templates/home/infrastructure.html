@@ -12,6 +12,163 @@
 
 {% block content %}
 
+<div class="row">
+    <div class="col-md-7 mt-4">
+      <div class="card">
+        <div class="card-header pb-0 px-3">
+          <h6 class="mb-0" style="color: crimson;">Chief Concerns <br></h6>
+        </div>
+        <div class="card-body pt-4 p-3">
+          
+          <div class="CON1">
+            
+            <div class="QN">
+                <input style="margin-left: 25%;" type="checkbox" id="headache" name="headache" value="Headache">
+                <label for="vehicle1"><h6> I have a headache </h6></label>
+            </div>
+            <div class="RA">
+              <div class="container">
+                <span style="margin-left: 19%;"> How bad is it? (0 - less | 5 - more)</span>
+                  <div class="moji" style="margin-left: 35%;" >😄</div>
+                  <div class="slider" style="margin-left: 25%;">
+                  <span>0</span>
+                  <input type="range" value="0" min="0" max="5" step="1" id="in1">
+                  <span>5</span><br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="CON1">
+            <div class="QN">
+                <input style="margin-left: 25%;" type="checkbox" id="headache" name="headache" value="Headache">
+                <label for="vehicle1"><h6> I have a cold </h6></label><br>
+            </div>
+            <div class="RA">
+              <div class="container">
+                <span style="margin-left: 19%;"> How bad is it? (0 - less | 5 - more)</span>
+                <div class="moji" style="margin-left: 35%;">😄</div>
+                <div class="slider" style="margin-left: 25%;">
+                  <span>0</span>
+                  <input type="range" value="0" min="0" max="5" step="1" id="in2">
+                  <span>5</span><br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="CON1">
+            
+            <div class="QN">
+                <input style="margin-left: 25%;" type="checkbox" id="headache" name="headache" value="Headache">
+                <label for="vehicle1"><h6> I have a fever </h6></label><br>
+            </div>
+            <div class="RA">
+              <div class="container">
+                <span style="margin-left: 19%;"> How bad is it? (0 - less | 5 - more)</span>
+                  <div class="moji" style="margin-left: 35%;">😄</div>
+                  <div class="slider" style="margin-left: 25%;">
+                  <span>0</span>
+                  <input type="range" value="0" min="0" max="5" step="1" id="in3">
+                  <span>5</span><br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="CON1">
+            
+            <div class="QN">
+                <input style="margin-left: 25%;" type="checkbox" id="headache" name="headache" value="Headache">
+                <label for="vehicle1"><h6> I have loose motions </h6></label><br>
+            </div>
+            <div class="RA">
+              <div class="container">
+                <span style="margin-left: 19%;"> How bad is it? (0 - less | 5 - more)</span>
+                  <div class="moji" style="margin-left: 35%;">😄</div>
+                  <div class="slider" style="margin-left: 25%;">
+                  <span>0</span>
+                  <input type="range" value="0" min="0" max="5" step="1" id="in4">
+                  <span>5</span> <br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="CON1">
+            
+            <div class="QN">
+                <input style="margin-left: 25%;" type="checkbox" id="headache" name="headache" value="Headache">
+                <label for="vehicle1"><h6> I have body pains </h6></label><br>
+            </div>
+            <div class="RA">
+              <div class="container">
+                <span style="margin-left: 19%;"> How bad is it? (0 - less | 5 - more)</span>
+                  <div class="moji" style="margin-left: 35%;">😄</div>
+                  <div class="slider" style="margin-left: 25%;">
+                  <span>0</span>
+                  <input type="range" value="0" min="0" max="5" step="1" id="in5">
+                  <span>5</span><br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="float:left ;">
+            <div class="bot">
+              <button type="button" class="btn btn-outline-primary" id="subbut" onclick="calcc()" style="margin-left: 130%;">SUBMIT</button>
+            </div>
+            <h6 id="ANSS">YOUR SCORE IN CURRENT HEALTH IS :</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 mt-4">
+      <div class="card h-100 mb-4">
+        <div class="card-header pb-0 px-3">
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="mb-0">Your rating on current health</h6>
+            </div>
+            <div class="col-md-6 d-flex justify-content-start justify-content-md-end align-items-center">
+              <i class="material-icons me-2 text-lg">date_range</i>
+              <small>1 - 30 JULY 2022 </small>
+            </div>
+          </div>
+        </div>
+        <div class="card-body pt-4 p-3">
+          <div class="container py-5">
+
+            <h2 class="h6 font-weight-bold text-center mb-4">Overall progress</h2>
+
+            <!-- Progress bar 1 -->
+            <div class="progress mx-auto" id="datav" data-value='0'>
+                <span class="progress-left">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar border-primary"></span>
+                </span>
+                <div
+                    class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold" id="fscore">50<sup class="small">%</sup></div>
+                </div>
+            </div>
+            <!-- END -->
+
+            <!-- Demo info -->
+            <div class="row text-center mt-4">
+                <div class="col-6 border-right">
+                    <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last
+                        week</span>
+                </div>
+                <div class="col-6">
+                    <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last
+                        month</span>
+                </div>
+            </div>
+            <!-- END -->
+</div>
+
+</div>
+</div>    
+</div>
 
 {% endblock content %}
 
