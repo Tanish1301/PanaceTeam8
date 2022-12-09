@@ -42,6 +42,8 @@ def login():
 
             login_user(user)
             return redirect(url_for('authentication_blueprint.route_default'))
+            return render_template('accounts/biographic_data.html')
+        
 
         # Something (user or pass) is not ok
         return render_template('accounts/login.html',
@@ -83,10 +85,11 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        return render_template('accounts/register.html',
-                               msg='User created please <a href="/login">login</a>',
-                               success=True,
-                               form=create_account_form)
+        # return render_template('accounts/register.html',
+        #                        msg='User created please <a href="/login">login</a>',
+        #                        success=True,
+        #                        form=create_account_form)
+        return render_template('accounts/biographic_data.html')
 
     else:
         return render_template('accounts/register.html', form=create_account_form)
